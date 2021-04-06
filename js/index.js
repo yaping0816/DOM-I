@@ -42,12 +42,27 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 //nav bar
+// Change the color of the navigation text to be green.
+// Utilize `.appendChild()` and `.prepend()` to add two new items to the navigation system. You can call them whatever you want.
 const nav = document.querySelector('nav');
+
 const navLinks = nav.querySelectorAll('a');
 const nameKey = 'nav-item-';
 navLinks.forEach( (item, index) => {
   item.textContent = siteContent['nav'][`${nameKey}${index + 1}`]; 
+  item.style.color = 'green';
 });
+
+const newNav1 = document.createElement('a');
+newNav1.textContent = 'Home';
+newNav1.style.color = 'green';
+nav.prepend(newNav1);
+
+const newNav2 = document.createElement('a');
+newNav2.textContent = 'Blog';
+newNav2.style.color = 'green';
+nav.appendChild(newNav2);
+
 
 // cta
 const cta = document.querySelector('.cta');
@@ -95,3 +110,5 @@ contentText[7].textContent = siteContent['contact']['email'];
 
 // footer
 contentText[8].textContent = siteContent['footer']['copyright'];
+
+
