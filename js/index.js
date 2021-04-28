@@ -125,7 +125,9 @@ const button = document.querySelector('button');
 function listener(event){
   event.currentTarget.style.background = '#FFD700';
   button.style.fontWeight = 'bold';
+  console.log(event.currentTarget);
 }
+
 cta.addEventListener('focusin', listener);
 // button.addEventListener('click', listener);
 
