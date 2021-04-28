@@ -112,3 +112,28 @@ contentText[7].textContent = siteContent['contact']['email'];
 contentText[8].textContent = siteContent['footer']['copyright'];
 
 
+// stretch task 3
+cta.style.background = '#E0FFFF';
+
+function callback(){
+ container.style.background = '#FFFAF0';
+}
+window.addEventListener('scroll', callback)
+
+const button = document.querySelector('button');
+
+function listener(event){
+  event.currentTarget.style.background = '#FFD700';
+  button.style.fontWeight = 'bold';
+}
+cta.addEventListener('focusin', listener);
+// button.addEventListener('click', listener);
+
+
+cta.addEventListener('focusout', event =>{
+  event.target.style.background = '';
+  cta.style.background = '#E0FFFF';
+  button.style.fontWeight = '';
+})
+// ❓ why the event listener only work when I focusin and focusout on the button not the cta section?
+// ❓ when i change the event from focusin to click on line 129, the whole cta section work, but the focusout only works afte I click the button and then focusout of the cta
