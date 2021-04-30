@@ -139,3 +139,5 @@ cta.addEventListener('focusout', event =>{
 })
 // ❓ why the event listener only work when I focusin and focusout on the button not the cta section?
 // ❓ when i change the event from focusin to click on line 129, the whole cta section work, but the focusout only works afte I click the button and then focusout of the cta
+// 😃❗❗BECAUSE focus can be used on any focusable element, like input, button, etc., as well as any other element you program to be focusable by using mouse click + TAB
+// that's also why you need to click the button in order to let focusout work, because when you only click the other element(cta here), you don't focusin, that's why you can't use focusout
