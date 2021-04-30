@@ -1,27 +1,32 @@
 // 10 seconds count-up timer
+
 let timer = setInterval(countTimer, 10);
 
 let totalMsTens = 0;
+let countStart =  false;
 
 function countTimer(){
-
-    
-    if(totalMsTens <= 1000){
-       let secondTens = Math.floor(totalMsTens / 1000);
-       let secondOnes = Math.floor((totalMsTens - secondTens * 1000) / 100);
-       
-       let msHundreds = Math.floor((totalMsTens - secondTens * 1000 - secondOnes * 100) / 10);
-       let msTens = Math.floor(totalMsTens - secondTens * 1000 - secondOnes * 100 - msHundreds * 10);
-
-        document.querySelector('#msTens').innerHTML = msTens;
-        document.querySelector('#msHundreds').innerHTML = msHundreds;
-        document.querySelector('#secondOnes').innerHTML = secondOnes;
-        document.querySelector('#secondTens').innerHTML = secondTens;
-
-        totalMsTens ++;
+    console.log('hii');
+    if(countStart){
         
+        if(totalMsTens <= 1000){
+            let secondTens = Math.floor(totalMsTens / 1000);
+            let secondOnes = Math.floor((totalMsTens - secondTens * 1000) / 100);
+            
+            let msHundreds = Math.floor((totalMsTens - secondTens * 1000 - secondOnes * 100) / 10);
+            let msTens = Math.floor(totalMsTens - secondTens * 1000 - secondOnes * 100 - msHundreds * 10);
+     
+             document.querySelector('#msTens').innerHTML = msTens;
+             document.querySelector('#msHundreds').innerHTML = msHundreds;
+             document.querySelector('#secondOnes').innerHTML = secondOnes;
+             document.querySelector('#secondTens').innerHTML = secondTens;
+     
+             totalMsTens ++;
+             
+     
+         }else clearInterval(timer);
+    }
 
-    }else clearInterval(timer);
     
     const digit = document.querySelectorAll('.digit');
 
@@ -30,7 +35,18 @@ function countTimer(){
     }
     
 }
+// add button to the timer
+const startButton = document.createElement('button');
+const resetButton = document.createElement('button');
+startButton.textContent = 'start';
+resetButton.textContent = 'reset';
+const body = document.querySelector('body');
+body.appendChild(startButton);
+body.appendChild(resetButton);
 
+startButton.addEventListener('click', event =>{
+    countStart = true;
+})
 
 
 
