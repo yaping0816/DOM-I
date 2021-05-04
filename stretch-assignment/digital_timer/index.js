@@ -67,26 +67,38 @@
 
 // 10 seconds count-up timer with start button and reset button
 let timer;
+let totalMsTens = 0;
+const digit = document.querySelectorAll('.digit');
+
 function time(cmd) {
     if(cmd === 'start'){
-        timer = setInterval(countTimer, 10);
+        if (!timer){ //when timer is null or undefined, setInteval, if the start button already clicked, the timer is not null anymore, do nothing
+            timer = setInterval(countTimer, 10);
+        }
+        digit.forEach(item => item.classList.remove('redDigit')); //remove the red digit after re-start the timer reaching 10 seconds
+    }
+    if(cmd==='stop'){
+        clearInterval(timer);
+
     }
 
     if(cmd === 'reset'){
         clearInterval(timer);
-        secondTens.textContent = 0;
-        secondOnes.textContent = 0;
-        msTens.textContent = 0;
-        msHundreds.textContent = 0;
+        secondTens.textContent = '-';
+        secondOnes.textContent = '-';
+        msTens.textContent = '-';
+        msHundreds.textContent = '-';
+        timer = undefined; //when clicking start again, line 74 run
+        totalMsTens = 0; //reset the timer to '0'
+        digit.forEach(item => item.classList.remove('redDigit'));
     }
 }
 
-let totalMsTens = 0;
-let countStart =  false;
+
 
 function countTimer(){
     console.log('hii');
-    // if(countStart){
+    
         
         if(totalMsTens <= 1000){
             let secondTens = Math.floor(totalMsTens / 1000);
@@ -103,12 +115,11 @@ function countTimer(){
              totalMsTens ++;
              
      
-         }else time('stop');
-    // }
-
+         }else {
+             time('stop');
+             
+            }
     
-    const digit = document.querySelectorAll('.digit');
-
     if(totalMsTens === 1000) {
         digit.forEach( item => item.classList.add('redDigit'));
     }
